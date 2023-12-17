@@ -45,7 +45,11 @@ func One(input *os.File, debug bool) {
 			}
 
 			colorSet[color] = value
-			sets[setCounter-1] = colorSet
+			colorSetCopy := make(map[string]int)
+			for k, v := range colorSet {
+				colorSetCopy[k] = v
+			}
+			sets[setCounter-1] = colorSetCopy
 			if strings.ContainsRune(games[2*i+1], ';') {
 				clear(colorSet)
 				setCounter++
